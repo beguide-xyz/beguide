@@ -1,25 +1,35 @@
 import React from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/popup/Popup.css";
+import {  
+  createBrowserRouter,
+  Link,
+  Route,
+  RouterProvider,
+  Routes, 
+  BrowserRouter
+} from 'react-router-dom';
+import Login from './pages/Login/Login';
+import Home from './pages/Home/Home'; // Create this component
+import Course from './pages/Course/Course'; // Create this component
+
+
+const Root = () => {
+  return (
+    <Routes>
+        <Route  default path="/login" component={Login} />
+        <Route  path="/home" component={Home} />
+        <Route  path="/course" component={Course} />
+        {/* Add more routes here */}
+    </Routes>
+  );
+};
 
 const Popup = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="text-lime-400">
-          Edit <code>src/pages/popup/Popup.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React!
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <Root />
+    </BrowserRouter>
   );
 };
 
