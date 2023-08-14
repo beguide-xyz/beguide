@@ -12,25 +12,13 @@ import {
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home'; // Create this component
 import Course from './pages/Course/Course'; // Create this component
+const routes = [
+  { path: "/", element: <Home /> },
+  { path: "/login", element: <Login /> },
+  { path: "/courses/", element: <Course /> },
+];
+
+// Create the browser router
+export const router = createBrowserRouter(routes);
 
 
-const Root = () => {
-  return (
-    <Routes>
-        <Route  default path="/login" component={Login} />
-        <Route  path="/home" component={Home} />
-        <Route  path="/course" component={Course} />
-        {/* Add more routes here */}
-    </Routes>
-  );
-};
-
-const Popup = () => {
-  return (
-    <BrowserRouter>
-        <Root />
-    </BrowserRouter>
-  );
-};
-
-export default Popup;
