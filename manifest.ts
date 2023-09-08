@@ -5,9 +5,10 @@ import packageJson from "./package.json";
  */
 const manifest: chrome.runtime.ManifestV3 = {
   manifest_version: 3,
-  name: packageJson.name,
+  name: "beguide",
   version: packageJson.version,
   description: packageJson.description,
+  permissions: ["storage"],
   options_page: "src/pages/options/index.html",
   background: {
     service_worker: "src/pages/background/index.js",

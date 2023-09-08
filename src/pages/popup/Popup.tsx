@@ -1,24 +1,39 @@
 import React from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/popup/Popup.css";
-import {  
-  createBrowserRouter,
-  Link,
-  Route,
-  RouterProvider,
-  Routes, 
-  BrowserRouter
-} from 'react-router-dom';
-import Login from './pages/Login/Login';
-import Home from './pages/Home/Home'; // Create this component
-import Course from './pages/Course/Course'; // Create this component
-const routes = [
-  { path: "/", element: <Home /> },
-  { path: "/login", element: <Login /> },
-  { path: "/courses/", element: <Course /> },
-];
+import useStorage from "@src/shared/hooks/useStorage";
+import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
+import withSuspense from "@src/shared/hoc/withSuspense";
 
-// Create the browser router
-export const router = createBrowserRouter(routes);
+const Popup = () => {
+  const theme = useStorage(exampleThemeStorage);
 
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p className="text-lime-400">
+          Edit <code>src/pages/popup/Popup.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React!
+        </a>
+        <button
+          style={{
+            color: theme === "light" ? "#fff" : "#000",
+          }}
+          onClick={exampleThemeStorage.toggle}
+        >
+          Toggle theme: [{theme}]
+        </button>
+      </header>
+    </div>
+  );
+};
 
+export default withSuspense(Popup);
